@@ -5,3 +5,6 @@ export * from './renderer';
 export * from './loader';
 export * from './mill';
 export * from './mouse';
+export * from './tween';
+export * from './country';
+export * from './info';

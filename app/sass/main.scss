@@ -5,9 +5,38 @@ html, body {
     padding: 0;
     overflow: hidden;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container {
     width: 100%;
     height: 100%;
+    background: url('/assets/images/galaxy.jpg');
+    background-size: 100% auto; 
+}
+
+.info-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(255,255,255, 0.8);
+    font-size: 12px;
+    line-height: 1.6;
+    color: #333;
+    max-width: 20%;
+    padding: 20px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+    border-radius: 3px;
+    transform: scale(0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    margin-left: 250px;
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: all;
+    }
 }

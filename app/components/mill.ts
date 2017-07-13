@@ -17,10 +17,10 @@ function loadMaterial(url) {
     });
 }
 function loadObject(url) {
-    let mtlLoader = new THREE.OBJLoader();
+    let objLoader = new THREE.OBJLoader();
 
     return new Promise((resolve, reject) => {
-        mtlLoader.load(url, (materials) => {
+        objLoader.load(url, (materials) => {
             resolve(materials);
         });
     });
@@ -41,12 +41,18 @@ export class Mill extends THREE.Group {
         
         this.position.set(0, 100, -500);
         this.add(this.object);
+
+        // Mouse.x.subscribe((value) => {
+        //     this.rotation.y += 0.0005 * value;    
+        // });
+
+        // Mouse.x.subscribe((value) => {
+        //     this.rotation.x += 0.0005 * value;
+        // });
     }
 
     render() {
-        // if (Mouse.pressed) {
-            this.rotation.y += 0.005 * Mouse.x;
-            this.rotation.x += 0.005 * Mouse.y;
-        // }
+        this.rotation.y -= 0.0001 * Mouse.x.value;
+        this.rotation.x -= 0.0005 * Mouse.y.value;
     }
 }

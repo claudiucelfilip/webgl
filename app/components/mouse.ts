@@ -1,26 +1,19 @@
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import 'rxjs/add/observable/combineLatest';
+
 export class Mouse {
-    static x: number;
-    static y: number;
-    static startX: number;
-    static startY: number;
-    static pressed: boolean;
+    static x: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    static y: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    static position: Observable<any> = Observable.combineLatest(Mouse.x, Mouse.y, (x, y) => ({x, y}));
+    static pressed: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     static hoverTarget: Element;
 
-    constructor() {}
-
-    static setPos(x, y) {
-        Mouse.x = x;
-        Mouse.y = y;
-        if (Mouse.pressed) {
-            Mouse.startX = Mouse.startX || Mouse.x;
-            Mouse.startY = Mouse.startY || Mouse.y;
-        } else {
-            Mouse.startX = 0;   
-            Mouse.startY = 0;
-        }
+    static setPos(x: number, y: number) {
+        Mouse.x.next(x);
+        Mouse.y.next(y);
     }
 
-    static press(pressed) {
-        Mouse.pressed = pressed;
+    static press(pressed: boolean) {
+        Mouse.pressed.next(pressed);
     }
 }

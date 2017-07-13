@@ -17,9 +17,10 @@ function onWindowResize() {
 }
 
 function onDocumentMouseMove(event) {
-    mouseX = (event.clientX - window.innerWidth / 2) / 2;
-    mouseY = (event.clientY - window.innerHeight / 2) / 2;
-
+    // mouseX = (event.clientX - window.innerWidth / 2) / 2;
+    // mouseY = (event.clientY - window.innerHeight / 2) / 2;
+    mouseX = ( event.clientX / window.innerWidth ) * 2 - 1; 
+    mouseY = - ( event.clientY / window.innerHeight ) * 2 + 1; 
     Mouse.setPos(mouseX, mouseY);
 }
 

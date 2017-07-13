@@ -16,7 +16,6 @@ export function load(promise) {
         Loader.add(promise);
         promise.then((result) => {
             target[key] = result;
-            console.log(target);
         });
     }
 }
